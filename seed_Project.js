@@ -6,16 +6,10 @@ var db = require('./models');
 
 var bobProjects = [
 {
-     proj_name: "Subscription Billing",
-     proj_type: "Market Diligence",
-     industry_sector: "Software",
-     proj_desc: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
-},
-{
      proj_name: "Architectural Spec Software",
      proj_type: "Strategic Marketing",
      industry_sector: "Arch/Eng",
-     proj_desc: "Helped company develop and actionable growth plan. This was done through detailed market sizing and market segmentation. Recommendations included product models and specific sales initiatives."
+     proj_desc: "Helped company develop an actionable growth plan. This was done through detailed market sizing and market segmentation. Recommendations included product models and specific sales initiatives."
 
 },
 {

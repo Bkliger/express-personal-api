@@ -39,11 +39,12 @@ $(document).ready(function(){
 
 function handleProfileSuccess(profile_json) {
   var html1 = "<a href= " + profile_json.github_link + ">Github Link</a>";
+  console.log(html1)
   $("#profile").append(html1);
-  var html2 = '<p><img src="/images/Bob.jpg"></p>'
-console.log(html2)
+  var html2 = '<p><img src="/images/Bob.jpg"></p>';
+
   $("#profile").append(html2);
-  var html3 = '<p>Current City  ' + profile_json.current_city +'</p>';
+  var html3 = '<p id="para1">Current City:  ' + profile_json.current_city +'</p>';
   $("#profile").append(html3);
   // var savedId = profile_json[0]._id;
 }

@@ -77,11 +77,32 @@ app.get('/api', function api_index(req, res) {
     base_url: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Returns a single profile object",
+      Return_Profile:{
+        name: "Bob Kliger",
+        github_link: 'https://github.com/bkliger',
+        github_profile_image: "",
+        current_city: "Berkeley"
+      }  },
+      {method: "GET", path: "/api/profile/projects", description: "Describes all recent projects. Returns an array of all projects",
+      Return_Projects: [
+        {proj_name: "Architectural Spec Software" ,
+        proj_type: "Strategic Marketing",
+        industry_sector: "Arch/Eng",
+        proj_desc: "Helped company develop and actionable growth plan. This was done through detailed market sizing and market segmentation. Recommendations included product models and specific sales initiatives."
+        }]
+      },
+      {method: "DELETE", path: "/api/profile/:_id", description: "Deletes the Project with the set _id",
+      Return_Deleted_Project:{
+        proj_name: "Architectural Spec Software" ,
+        proj_type: "Strategic Marketing",
+        industry_sector: "Arch/Eng",
+        proj_desc: "Helped company develop an actionable growth plan. This was done through detailed market sizing and market segmentation. Recommendations included product models and specific sales initiatives."
+        }
+      }
     ]
+    });
   });
-});
 
 /**********
  * SERVER *
