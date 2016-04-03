@@ -1,5 +1,6 @@
 // require express and other modules
 var express = require('express'),
+    bodyParser = require('body-parser'),
     app = express();
 
 // parse incoming urlencoded form data
@@ -7,11 +8,16 @@ var express = require('express'),
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
 /************
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -34,6 +40,34 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
+ app.get('/api/profile', function (req, res) {
+   db.Profile.find({}, function(err, profile){
+     if (err) { return console.log("profile error: " + err); }
+     res.json(profile);
+   });
+ });
+
+ app.get('/api/profile', function (req, res) {
+   db.Profile.find({}, function(err, profile){
+     if (err) { return console.log("profile error: " + err); }
+     res.json(profile);
+   });
+ });
+
+
+
+  //  res.json([{
+  //    proj_name: "Subscription Billing",
+  //    proj_type: "Market Diligence",
+  //    industry_sector: "Software",
+  //    proj_desc: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
+  //  }, {
+  //    proj_name: "Dev Ops",
+  //    proj_type: "Market Intelligence",
+  //    industry_sector: "Software",
+  //    proj_desc: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
+  //  }]);
+
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
@@ -46,7 +80,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
       {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
     ]
-  })
+  });
 });
 
 /**********
