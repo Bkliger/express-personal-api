@@ -28,7 +28,7 @@
         <div id="projects" class="col-md-8 col-md-offset-2">
           <!--projects handlebars template -->
           <script id="proj_template" type="text/x-handlebars-template">
-
+<!-- <div id="project-target" -->
             <table border="1">
             <tr>
             <th>Project Name</th>
@@ -43,11 +43,13 @@
             <td>{{proj_type}}</td>
             <td>{{industry_sector}}</td>
             <td>{{proj_desc}}</td>
+            <td><button type="button" id="button" name="button" class="deleteBtn btn btn-danger pull-right"
+              data-proj_id={{_id}} data-control="deleteProject">Delete</button></td>
             </tr>
             {{/each}}
-          </tbody>
+            </tbody>
             </table>
-
+          <!-- </div> -->
           </script>
         </div>
         <h4><a href="/api">Read My API Documentation</a></h4>

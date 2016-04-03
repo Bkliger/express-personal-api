@@ -40,33 +40,32 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
- app.get('/api/profile', function (req, res) {
-   db.Profile.find({}, function(err, profile){
+ app.get('/api/:_id', function (req, res) {
+   db.Profile.findById(req.params._id, function(err, profile){
      if (err) { return console.log("profile error: " + err); }
      res.json(profile);
    });
  });
 
- app.get('/api/profile', function (req, res) {
-   db.Profile.find({}, function(err, profile){
-     if (err) { return console.log("profile error: " + err); }
-     res.json(profile);
+ app.get('/api/profile/projects', function (req, res) {
+   db.Projects.find()
+      .exec(function(err, project){
+     if (err) { return console.log("project error: " + err); }
+     res.json(project);
+
    });
  });
 
+ app.delete('/api/profile/:_id' , function (req, res) {
+   console.log(req.params._id)
+   db.Projects.findOneAndRemove({_id:req.params._id}, function(err,deletedProject){
+     if (err) { return console.log("project error: " + err); }
+     console.log(deletedProject);
+     res.json(deletedProject);
+   });
 
+ });
 
-  //  res.json([{
-  //    proj_name: "Subscription Billing",
-  //    proj_type: "Market Diligence",
-  //    industry_sector: "Software",
-  //    proj_desc: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
-  //  }, {
-  //    proj_name: "Dev Ops",
-  //    proj_type: "Market Intelligence",
-  //    industry_sector: "Software",
-  //    proj_desc: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
-  //  }]);
 
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below

@@ -1,13 +1,13 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-var ProfileSchema = new Schema({
-  name: String,
-  github_link: String,
-  github_profile_image: String,
-  current_city: String
+var ProjectsSchema = new Schema({
+  proj_name: String,
+  proj_type: String,
+  industry_sector: String,
+  proj_desc: String
 });
 
-var Profile = mongoose.model('Profile', ProfileSchema);
+var Projects = mongoose.model('Projects', ProjectsSchema);
 
-module.exports = Profile;
+module.exports = Projects;
