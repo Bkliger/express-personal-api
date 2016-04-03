@@ -6,7 +6,7 @@ $(document).ready(function(){
 //format page header
   $.ajax({
     method: "GET",
-    url: "/api/57007658df58b3c0f662768a",
+    url: "/api/profile",
     success: handleProfileSuccess,
     error: handleProfileError
   });
@@ -38,11 +38,12 @@ $(document).ready(function(){
 });
 
 function handleProfileSuccess(profile_json) {
-  var html1 = '<p>github Link  ' + profile_json.github_link +'<p>';
+  var html1 = "<a href= " + profile_json.github_link + ">Github Link</a>";
   $("#profile").append(html1);
-  var html2 = '<p>github image  ' + profile_json.github_profile_image +'<p>';
+  var html2 = '<p><img src="/images/Bob.jpg"></p>'
+console.log(html2)
   $("#profile").append(html2);
-  var html3 = '<p>Current City  ' + profile_json.current_city +'<p>';
+  var html3 = '<p>Current City  ' + profile_json.current_city +'</p>';
   $("#profile").append(html3);
   // var savedId = profile_json[0]._id;
 }
@@ -60,10 +61,9 @@ function handleProjectsError (err) {
 }
 
 function handleProjectDeleteSuccess(project_json) {
-  console.log ("here");
-  console.log (project_json);
-    // var projectHtml = proj_template({project: project_json});
-  // $("#projects").append(projectHtml);
+  var projectHtml = proj_template({project: project_json});
+  $("#projects").empty();
+  $("#projects").append(projectHtml);
 }
 function deleteProjectError (err) {
   console.log("project delete failed");
