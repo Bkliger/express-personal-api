@@ -1,7 +1,7 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-image: url("/images/Maybeck.jpg");
 }
 
 h1 {
@@ -38,7 +38,7 @@ table.gridtable td {
 }
 #table-exception{
   border-width: 0px;
-  background-color: skyblue;
+  background-color: rgba(0,0,0,0);
 }
 
 #para1{
