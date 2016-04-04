@@ -72,7 +72,7 @@ app.get('/', function homepage(req, res) {
     var newProject = new db.Projects({
       proj_name: req.body.proj_name,
       proj_type: req.body.proj_type,
-      industry_sector: req.body.proj_sector,
+      industry_sector: req.body.industry_sector,
       proj_desc: req.body.proj_desc
     });
 
