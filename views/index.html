@@ -1,58 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
+  <title>Blank</title>
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1 class="test">Profile of Bob Kliger</h1>
-        </div>
-        <div id="profile" class="col-md-8 col-md-offset-2">
-        </div>
-        <div id="projects" class="col-md-8 col-md-offset-2">
-          <!--projects handlebars template -->
-          <script id="proj_template" type="text/x-handlebars-template">
-            <h3>Recent Projects</h3>
-            <table id="project-table" class="gridtable">
+  <!-- VENDOR SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+  <!-- APPLICATION SCRIPTS -->
+  <script src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1 class="test">Profile of Bob Kliger</h1>
+      </div>
+      <div id="profile" class="col-md-8 col-md-offset-2">
+      </div>
+      <div id="projects" class="col-md-8 col-md-offset-2">
+        <!--projects handlebars template -->
+        <script id="proj_template" type="text/x-handlebars-template">
+          <h3>Recent Projects</h3>
+          <table id="project-table" class="gridtable">
             <tr>
-            <th>Project Name</th>
-            <th>Type</th>
-            <th>Industry Sector</th>
-            <th>Description</th>
+              <th>Project Name</th>
+              <th>Type</th>
+              <th>Industry Sector</th>
+              <th>Description</th>
             </tr>
             <tbody>
-            {{#each project}}
-            <tr>
-            <td>{{proj_name}}</td>
-            <td>{{proj_type}}</td>
-            <td>{{industry_sector}}</td>
-            <td>{{proj_desc}}</td>
-            <td id="table-exception"><button type="button" id="button" name="button" class="deleteBtn btn btn-danger pull-right"
-              data-proj_id={{_id}} data-control="deleteProject">Delete</button></td>
-            </tr>
-            {{/each}}
+              {{#each project}}
+              <tr>
+                <td>{{proj_name}}</td>
+                <td>{{proj_type}}</td>
+                <td>{{industry_sector}}</td>
+                <td>{{proj_desc}}</td>
+                <td id="table-exception">
+                  <button type="button" id="button" name="button" class="deleteBtn btn btn-danger pull-right btn-sm" data-proj_id={{_id}} data-control="deleteProject">Delete</button>
+                </td>
+              </tr>
+              {{/each}}
             </tbody>
-            </table>
-          </script>
-        </div>
-        <h4><a href="/api">Read My API Documentation</a></h4>
+          </table>
+        </script>
       </div>
+      <h4><a href="/api">Read My API Documentation</a></h4>
     </div>
-  </body>
+    <form class="form-inline" id="newProjectForm">
+      <div class="form-group">
+        <label for="proj_name">Project Name</label>
+        <input type="text" class="form-control" name="proj_name" placeholder="Project Name">
+      </div>
+      <div class="form-group">
+        <label for="proj_type">Project Type</label>
+        <input type="text" class="form-control" name="proj_type" placeholder="Project Type">
+        <p>
+      </div>
+      <div class="form-group">
+        <label for="proj_sector">Industry Sector</label>
+        <input type="text" class="form-control" name="proj_sector" placeholder="Industry Sector">
+      </div>
+      <div class="form-group">
+        <label for="proj_desc">Project Description</label>
+        <input type="text" class="form-control" name="proj_desc" placeholder="Project Description">
+      </div>
+      <p><p>
+      <button type="submit" class="btn btn-primary btn-default">Create Project</button>
+    </form>
+  </div>
+</body>
+
 </html>

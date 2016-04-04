@@ -34,12 +34,21 @@ $(document).ready(function(){
       });
     });
 
+  $("#newProjectForm").on("submit", function(e){
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      data: $(this).serializeArray(),
+      url: '/api/profile/projects',
+      success: handleProjectsSuccess,
+      error: newProjectError,
+    });
+  });
 
 });
 
 function handleProfileSuccess(profile_json) {
   var html1 = "<a href= " + profile_json.github_link + ">Github Link</a>";
-  console.log(html1)
   $("#profile").append(html1);
   var html2 = '<p><img src="/images/Bob.jpg"></p>';
 
@@ -54,6 +63,7 @@ function handleProfileError(err) {
 }
 
 function handleProjectsSuccess(project_json) {
+  $("#projects").empty();
   var projectHtml = proj_template({project: project_json});
   $("#projects").append(projectHtml);
 }
@@ -68,4 +78,7 @@ function handleProjectDeleteSuccess(project_json) {
 }
 function deleteProjectError (err) {
   console.log("project delete failed");
+}
+function newProjectError (err) {
+    console.log("add project failed");
 }

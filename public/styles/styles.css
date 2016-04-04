@@ -5,6 +5,8 @@ body {
 }
 
 h1 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   margin-top: 50px;
   text-align: center;
 }
@@ -16,20 +18,23 @@ table.gridtable {
 	border-width: 1px;
 	border-color: #666666;
 	border-collapse: collapse;
+  border-spacing: 0.5rem;
+  padding: 0.5rem;
 }
 table.gridtable th {
-	border-width: 1px;
-	padding: 8px;
+	border-width: 1.5px;
+	padding: .5rem;
 	border-style: solid;
 	border-color: #666666;
 	background-color: #dedede;
 }
 table.gridtable td {
-	border-width: 1px;
+	border-width: 1.5px;
 	padding: 8px;
 	border-style: solid;
 	border-color: #666666;
 	background-color: #ffffff;
+  padding: .5rem;
 }
 #table-exception{
   border-width: 0px;
